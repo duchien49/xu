@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Mời Sinh Nhật</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e90ff, #00b7eb);
+            overflow: hidden;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            color: #1e90ff;
+            font-size: 2.2em;
+            margin: 10px 0;
+        }
+        p {
+            color: #333;
+            font-size: 1.1em;
+            margin: 8px 0;
+        }
+        .emoji {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #00b7eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 15px;
+            margin-right: 10px;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: #1e90ff;
+        }
+        .button-decline {
+            position: absolute; /* cho phép di chuyển */
+            padding: 10px 20px;
+            background: #e63946;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 15px;
+            transition: background 0.3s, left 0.3s, top 0.3s;
+            cursor: pointer;
+        }
+        .button-decline:hover {
+            background: #d00000;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🎉 Mời Bạn Đến Sinh Nhật! 🎂</h1>
+        <p class="emoji">🦆🥸😹🤭🎉</p>
+        <p>Kính mời <strong> chị Hằng (Xù)</strong> đến tham dự tiệc sinh nhật</p>
+        <p><strong>Thời gian:</strong> 17h, Ngày 4/9/2025</p>
+        <p><strong>Địa điểm:</strong> 521/9 Lương Định Của, Vĩnh Ngọc, Nha Trang</p>
+        <p><strong>Special:</strong> Các món ăn do duchien49 và nhóm 3 trai mập mờ chuẩn bị</p>
+        <p>Được thực hiện hóa bởi duchien49 và phuc197</p>
+        
+        <!-- Nút xác nhận: chuyển sang trang cảm ơn -->
+        <a href="thankyou.html" class="button">Xác Nhận Tham Gia</a>
+
+        <!-- Nút từ chối: sẽ chạy đi -->
+        <a id="declineBtn" class="button-decline">Hong Tham Gia</a>
+    </div>
+
+    <script>
+        const declineBtn = document.getElementById("declineBtn");
+
+        declineBtn.addEventListener("mouseenter", () => {
+            // Lấy kích thước màn hình
+            const card = document.querySelector(".card");
+            const cardRect = card.getBoundingClientRect();
+
+            // Giới hạn vùng chạy trong card
+            const maxX = cardRect.width - declineBtn.offsetWidth - 20;
+            const maxY = cardRect.height - declineBtn.offsetHeight - 20;
+
+            // Random vị trí mới
+            const newX = Math.floor(Math.random() * maxX);
+            const newY = Math.floor(Math.random() * maxY);
+
+            // Cập nhật vị trí
+            declineBtn.style.left = newX + "px";
+            declineBtn.style.top = newY + "px";
+        });
+    </script>
+</body>
+</html>
